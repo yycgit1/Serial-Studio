@@ -26,6 +26,7 @@
 name: Deploy
 
 on:
+  workflow_dispatch:
   push:               # Run on push
     paths-ignore:     # File patterns to ignore
     - '**.md'         # Ignore changes to *.md files
@@ -192,7 +193,7 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_PREFIX_PATH="${{github.workspace}}/grpc-prefix;${CMAKE_PREFIX_PATH}" \
           -DBUILD_COMMERCIAL=ON \
-          -DBUILD_GPL3=OFF
+          -DBUILD_GPL3=ON
 
     - name: '🚧 Build application'
       run: cmake --build build --config Release -j 16
@@ -360,7 +361,7 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_PREFIX_PATH="${{github.workspace}}/grpc-prefix;${CMAKE_PREFIX_PATH}" \
           -DBUILD_COMMERCIAL=ON \
-          -DBUILD_GPL3=OFF
+          -DBUILD_GPL3=ON
 
     - name: '🚧 Build application'
       run: cmake --build build --config Release -j 16
@@ -493,7 +494,7 @@ jobs:
           -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" \
           -DCMAKE_PREFIX_PATH="${{github.workspace}}/grpc-prefix;${CMAKE_PREFIX_PATH}" \
           -DBUILD_COMMERCIAL=ON \
-          -DBUILD_GPL3=OFF
+          -DBUILD_GPL3=ON
 
     - name: '🚧 Build application'
       run: cmake --build build --config Release -j 16
@@ -652,7 +653,7 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release `
           -DCMAKE_CONFIGURATION_TYPES=Release `
           -DBUILD_COMMERCIAL=ON `
-          -DBUILD_GPL3=OFF
+          -DBUILD_GPL3=ON
 
     - name: '🚧 Build application'
       run: cmake --build build --config Release -j 16
